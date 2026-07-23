@@ -1,0 +1,40 @@
+name: Build Admin Docker Image
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ["v*"]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            NEXT_PUBLIC_API_URL=http://backend:3001/api
+            NEXT_PUBLIC_BROWSER_API_URL=${{ vars.ADMIN_BROWSER_API_URL }}
+            NEXT_PUBLIC_GITHUB_URL=${{ vars.ADMIN_GITHUB_URL }}
+            NEXT_PUBLIC_GA4_URL=${{ vars.ADMIN_GA4_URL }}
+            NEXT_PUBLIC_POSTHOG_URL=${{ vars.ADMIN_POSTHOG_URL }}
+            NEXT_PUBLIC_SENTRY_URL=${{ vars.ADMIN_SENTRY_URL }}
+            NEXT_PUBLIC_GRAFANA_URL=${{ vars.ADMIN_GRAFANA_URL }}
+            NEXT_PUBLIC_CLOUDWATCH_URL=${{ vars.ADMIN_CLOUDWATCH_URL }}
+            NEXT_PUBLIC_AWS_CONSOLE_URL=${{ vars.ADMIN_AWS_CONSOLE_URL }}
+            NEXT_PUBLIC_STRIPE_URL=${{ vars.ADMIN_STRIPE_URL }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ vars.ADMIN_SENTRY_DSN }}
+            SENTRY_ENVIRONMENT=${{ vars.DEPLOY_ENVIRONMENT }}
+            SENTRY_TRACES_SAMPLE_RATE=0.1
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/qivro-admin:${{ github.sha }}
