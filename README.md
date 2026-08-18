@@ -2,8 +2,8 @@
 
 Standalone, admin-only Next.js application for operating Qivro. Its source,
 dependencies, Dockerfile, environment contract, and CI workflow are separated
-from the public frontend. It still needs its own Git remote before the release
-lifecycle is fully independent.
+from the public frontend. This repository owns an independent release lifecycle
+for the administration application.
 
 ## Capabilities
 
