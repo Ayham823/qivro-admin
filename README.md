@@ -5,6 +5,10 @@ dependencies, Dockerfile, environment contract, and CI workflow are separated
 from the public frontend. This repository owns an independent release lifecycle
 for the administration application.
 
+## Command Center Preview
+
+![Qivro Admin founder command center](docs/screenshots/admin-overview.png)
+
 ## Capabilities
 
 - Founder command center with live business, AI, queue, and platform signals
