@@ -12,9 +12,9 @@ import {
   ShieldCheck,
   Undo2,
 } from "lucide-react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import OpsPageHeader from "@/components/OpsPageHeader"
-import { integrations } from "@/lib/integrations"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import OpsPageHeader from "@/components/layout/OpsPageHeader"
+import { integrations } from "@/config/integrations"
 
 const releaseChecks = [
   { icon: PackageCheck, label: "Immutable image tags", detail: "Deploy a commit SHA, never an untraceable latest image." },

@@ -1,9 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import KpiCard from "@/components/KpiCard"
-import { ErrorBlock, LoadingBlock } from "@/components/StateBlock"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import KpiCard from "@/components/ui/KpiCard"
+import { ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
 import { getExperiments, type OpsExperimentsDashboard } from "@/lib/api"
 import { getToken } from "@/lib/auth"
 

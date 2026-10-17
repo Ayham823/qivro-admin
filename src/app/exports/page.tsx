@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { ErrorBlock } from "@/components/StateBlock"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { ErrorBlock } from "@/components/ui/StateBlock"
 import { apiRequest, type OpsExportDataset } from "@/lib/api"
 import { getToken } from "@/lib/auth"
 

@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import Link from "next/link"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import { apiRequest, type OpsListing, type Paginated } from "@/lib/api"
 import { getToken } from "@/lib/auth"
 
@@ -222,6 +223,7 @@ export default function ListingsPage() {
                   </td>
                   <td data-label="Actions">
                     <div className="flex flex-wrap gap-2">
+                      <Link className="ops-button" href={`/listings/${listing.id}/building`}>Building link</Link>
                       <button className="ops-button" onClick={() => action(listing.id, "PUBLISHED")}>Publish</button>
                       <button className="ops-button" onClick={() => action(listing.id, "ARCHIVED")}>Archive</button>
                       <button className="ops-button" onClick={() => feature(listing.id, "FEATURED")}>Feature</button>

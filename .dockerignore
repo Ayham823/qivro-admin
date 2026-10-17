@@ -6,3 +6,10 @@ node_modules
 !.env.example
 npm-debug.log*
 *.tsbuildinfo
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+backups/
+*.dump

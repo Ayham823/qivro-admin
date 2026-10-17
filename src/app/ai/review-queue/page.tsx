@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import {
   getAiReviewQueue,
   updateAiFeedback,
@@ -28,7 +28,7 @@ export default function AiReviewQueuePage() {
   const [busyId, setBusyId] = useState("")
   const { showToast, ToastHost } = useToast()
 
-  const loadQueue = async () => {
+  const loadQueue = useCallback(async () => {
     const token = getToken()
     if (!token) {
       router.replace("/login")
@@ -49,13 +49,23 @@ export default function AiReviewQueuePage() {
     if (fallback) params.set("fallback", fallback)
 
     setData(await getAiReviewQueue(token, params))
-  }
+  }, [
+    approval,
+    correctness,
+    endpoint,
+    fallback,
+    outcome,
+    page,
+    reviewState,
+    router,
+    usefulness,
+  ])
 
   useEffect(() => {
     loadQueue().catch((err) =>
       setError(err instanceof Error ? err.message : "Failed to load AI review queue")
     )
-  }, [approval, correctness, endpoint, fallback, outcome, page, reviewState, router, usefulness])
+  }, [loadQueue])
 
   const submitFeedback = async (
     requestId: string,

@@ -113,3 +113,7 @@ new files from `~/Qivro/admin`.
 
 Open `http://localhost:3012`. The command palette is available with
 `Ctrl+K` or `Cmd+K`.
+
+## Development snapshot
+
+The latest source work is being reviewed separately from the default branch. See [local source setup and operating notes](docs/LOCAL_SOURCE_README.md). A source snapshot does not establish a production deployment.

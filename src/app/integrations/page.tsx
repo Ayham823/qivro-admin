@@ -14,9 +14,9 @@ import {
   KeyRound,
   Link2,
 } from "lucide-react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import OpsPageHeader from "@/components/OpsPageHeader"
-import { integrations, type IntegrationDefinition } from "@/lib/integrations"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import OpsPageHeader from "@/components/layout/OpsPageHeader"
+import { integrations, type IntegrationDefinition } from "@/config/integrations"
 
 type Category = IntegrationDefinition["category"]
 type Filter = "All" | Category

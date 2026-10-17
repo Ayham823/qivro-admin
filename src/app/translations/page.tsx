@@ -14,9 +14,9 @@ import {
   ShieldCheck,
   X,
 } from "lucide-react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import {
   generateMissingTranslation,
   getListingTranslations,

@@ -1,10 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import { apiRequest, type OpsUser, type Paginated } from "@/lib/api"
 import { getToken } from "@/lib/auth"
 
@@ -112,6 +113,7 @@ export default function UsersPage() {
                   </td>
                   <td>
                     <div className="flex flex-wrap gap-2">
+                      <Link className="ops-button" href={`/trust?userId=${encodeURIComponent(user.id)}`}>Trust evidence</Link>
                       <button className="ops-button" onClick={() => updateUser(user.id, { isVerified: true })}>Verify</button>
                       <button className="ops-button" onClick={() => updateUser(user.id, { plan: "PREMIUM" })}>Premium</button>
                       <button className="ops-button" onClick={() => updateUser(user.id, { role: "ADMIN" })}>Make Admin</button>
