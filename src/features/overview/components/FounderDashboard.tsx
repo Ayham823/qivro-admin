@@ -31,7 +31,7 @@ import {
   type OpsToursDashboard,
 } from "@/lib/api"
 import { getToken } from "@/lib/auth"
-import { integrations } from "@/lib/integrations"
+import { integrations } from "@/config/integrations"
 
 type DashboardData = {
   overview?: OpsOverview

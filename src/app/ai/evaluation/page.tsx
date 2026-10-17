@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import KpiCard from "@/components/KpiCard"
-import { ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import { useCallback, useEffect, useState } from "react"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import KpiCard from "@/components/ui/KpiCard"
+import { ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import {
   getAiEvaluation,
   getAiEvaluationDataset,
@@ -18,7 +18,7 @@ export default function AiEvaluationPage() {
   const [error, setError] = useState("")
   const { showToast, ToastHost } = useToast()
 
-  const loadEvaluation = async () => {
+  const loadEvaluation = useCallback(async () => {
     const token = getToken()
     if (!token) return
 
@@ -26,13 +26,13 @@ export default function AiEvaluationPage() {
     if (endpoint) params.set("endpoint", endpoint)
 
     setData(await getAiEvaluation(token, params))
-  }
+  }, [endpoint])
 
   useEffect(() => {
     loadEvaluation().catch((err) =>
       setError(err instanceof Error ? err.message : "Failed to load AI evaluation")
     )
-  }, [endpoint])
+  }, [loadEvaluation])
 
   const downloadDataset = async (format: "json" | "csv") => {
     const token = getToken()

@@ -1,12 +1,12 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import KpiCard from "@/components/KpiCard"
-import { ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import KpiCard from "@/components/ui/KpiCard"
+import { ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import {
   apiRequest,
   updateAiFeedback,
@@ -23,7 +23,7 @@ export default function AiPage() {
   const [busyId, setBusyId] = useState("")
   const { showToast, ToastHost } = useToast()
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     const token = getToken()
 
     if (!token) {
@@ -38,13 +38,13 @@ export default function AiPage() {
 
     setMetrics(aiMetrics)
     setHealth(systemHealth)
-  }
+  }, [router])
 
   useEffect(() => {
     loadData().catch((err) =>
       setError(err instanceof Error ? err.message : "Failed to load AI metrics")
     )
-  }, [router])
+  }, [loadData])
 
   const applyFeedback = async (
     requestId: string,

@@ -1,4 +1,4 @@
-import GuardedOpsShell from "@/components/GuardedOpsShell"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
 
 export default function SettingsPage() {
   return (

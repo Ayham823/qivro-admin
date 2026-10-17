@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import KpiCard from "@/components/KpiCard"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import { useCallback, useEffect, useMemo, useState } from "react"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import KpiCard from "@/components/ui/KpiCard"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import {
   getRankingFeedback,
   updateRankingFeedback,
@@ -34,18 +34,18 @@ export default function RankingFeedbackPage() {
     return nextParams
   }, [objective, reviewState])
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     const token = getToken()
     if (!token) return
 
     setData(await getRankingFeedback(token, params))
-  }
+  }, [params])
 
   useEffect(() => {
     loadData().catch((err) =>
       setError(err instanceof Error ? err.message : "Failed to load ranking feedback")
     )
-  }, [params])
+  }, [loadData])
 
   const updateFeedback = async (
     item: OpsRankingFeedbackItem,

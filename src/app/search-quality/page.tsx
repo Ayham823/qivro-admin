@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import KpiCard from "@/components/KpiCard"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
-import { useToast } from "@/components/Toast"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import KpiCard from "@/components/ui/KpiCard"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
+import { useToast } from "@/components/ui/Toast"
 import {
   createSearchOverride,
   createSearchSynonym,

@@ -15,9 +15,9 @@ import {
   TriangleAlert,
   Workflow,
 } from "lucide-react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import OpsPageHeader from "@/components/OpsPageHeader"
-import { LoadingBlock } from "@/components/StateBlock"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import OpsPageHeader from "@/components/layout/OpsPageHeader"
+import { LoadingBlock } from "@/components/ui/StateBlock"
 import {
   apiRequest,
   getTours,

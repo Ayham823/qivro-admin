@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/StateBlock"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { EmptyBlock, ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
 import { apiRequest, type OpsLead, type Paginated } from "@/lib/api"
 import { getToken } from "@/lib/auth"
 

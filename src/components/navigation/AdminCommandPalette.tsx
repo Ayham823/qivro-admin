@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Search, X } from "lucide-react"
 import { useRouter } from "next/navigation"
-import type { AdminNavItem } from "@/lib/admin-navigation"
+import type { AdminNavItem } from "@/config/admin-navigation"
 
 function searchableText(item: AdminNavItem) {
   return [

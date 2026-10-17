@@ -12,6 +12,7 @@ import {
   FlaskConical,
   GitBranch,
   Home,
+  Images,
   Languages,
   Layers3,
   ListChecks,
@@ -176,6 +177,13 @@ export const adminNavGroups: AdminNavGroup[] = [
         keywords: ["human review", "fallback", "failed"],
       }),
       item("Operations", {
+        href: "/ai/media-review",
+        label: "AI Media Review",
+        description: "Review generated property media before publication.",
+        icon: Images,
+        keywords: ["media", "images", "human review", "publication"],
+      }),
+      item("Operations", {
         href: "/ai/evaluation",
         label: "AI Evaluation",
         description: "Quality evaluation, expected outputs, and scoring.",
@@ -208,6 +216,13 @@ export const adminNavGroups: AdminNavGroup[] = [
   {
     label: "Trust and safety",
     items: [
+      item("Trust and safety", {
+        href: "/trust",
+        label: "Trust Evidence",
+        description: "Review email evidence metadata and audited revocations.",
+        icon: FileClock,
+        keywords: ["evidence", "email", "revocation", "audit"],
+      }),
       item("Trust and safety", {
         href: "/moderation/reports",
         label: "Moderation Queue",

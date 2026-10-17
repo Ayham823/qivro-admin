@@ -5,6 +5,7 @@ const internalApiUrl = (
 ).replace(/\/$/, "")
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   async rewrites() {
     return [
       {

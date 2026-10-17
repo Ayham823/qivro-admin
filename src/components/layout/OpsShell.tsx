@@ -18,14 +18,15 @@ import {
   Sparkles,
   X,
 } from "lucide-react"
-import AdminCommandPalette from "@/components/AdminCommandPalette"
+import AdminCommandPalette from "@/components/navigation/AdminCommandPalette"
 import {
   adminNavGroups,
   adminNavItems,
   getActiveAdminNavItem,
   isAdminNavItemActive,
-} from "@/lib/admin-navigation"
-import { removeToken } from "@/lib/auth"
+} from "@/config/admin-navigation"
+import { logout as logoutSession } from "@/lib/api"
+import { getToken, removeToken } from "@/lib/auth"
 
 export type AdminUserIdentity = {
   id: string
@@ -129,9 +130,17 @@ export default function OpsShell({
     window.localStorage.setItem(SIDEBAR_STORAGE_KEY, String(next))
   }
 
-  const logout = () => {
-    removeToken()
-    router.push("/login")
+  const logout = async () => {
+    const token = getToken()
+
+    try {
+      if (token) {
+        await logoutSession(token)
+      }
+    } finally {
+      removeToken()
+      router.push("/login")
+    }
   }
 
   const openCommandPalette = () => {

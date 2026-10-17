@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import OpsShell, { type AdminUserIdentity } from "@/components/OpsShell"
-import { LoadingBlock } from "@/components/StateBlock"
+import OpsShell, { type AdminUserIdentity } from "@/components/layout/OpsShell"
+import { LoadingBlock } from "@/components/ui/StateBlock"
 import { getMe } from "@/lib/api"
 import { getToken, removeToken, saveDeniedAccess } from "@/lib/auth"
 

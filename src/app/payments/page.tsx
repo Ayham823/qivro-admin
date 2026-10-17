@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react"
 import { CircleDollarSign, CreditCard, ReceiptText } from "lucide-react"
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import { ErrorBlock, LoadingBlock } from "@/components/StateBlock"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import { ErrorBlock, LoadingBlock } from "@/components/ui/StateBlock"
 import { apiRequest, type OpsOverview } from "@/lib/api"
 import { getToken } from "@/lib/auth"
-import { integrations } from "@/lib/integrations"
+import { integrations } from "@/config/integrations"
 
 export default function PaymentsPage() {
   const [data, setData] = useState<OpsOverview | null>(null)

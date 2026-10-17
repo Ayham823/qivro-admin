@@ -1,5 +1,5 @@
-import GuardedOpsShell from "@/components/GuardedOpsShell"
-import FounderDashboard from "@/components/FounderDashboard"
+import GuardedOpsShell from "@/components/layout/GuardedOpsShell"
+import FounderDashboard from "@/features/overview/components/FounderDashboard"
 
 export default function OverviewPage() {
   return (
