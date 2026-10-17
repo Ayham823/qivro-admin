@@ -18,3 +18,7 @@ Validation may still be running when the draft opens; consult the PR checks and 
 The source snapshot passed a limited high-confidence credential-pattern scan and path review. This is not a complete security audit.
 
 Reachable history was scanned separately across all 18 remote repositories and seven local repositories with Gitleaks 8.30.1. Historical findings remain unresolved until credential rotation and coordinated history cleanup. This import does not publish the unpushed local ancestry. The focused Docker/CI fixes for frontend, backend, and AI each passed GitHub Actions before this larger import; this snapshot still requires its own CI.
+
+## Follow-up validation
+
+Production npm audit now reports zero vulnerabilities after compatible dependency patches. GitHub Actions must verify this updated lockfile.
